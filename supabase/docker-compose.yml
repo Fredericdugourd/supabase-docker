@@ -14,7 +14,7 @@ services:
       - "54322:5432"
 
   studio:
-    image: supabase/studio:20240404-4b9c1c6
+    image: supabase/studio:2024.04.01
     container_name: supabase-studio
     ports:
       - "8080:3000"
