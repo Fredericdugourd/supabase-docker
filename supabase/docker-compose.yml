@@ -29,20 +29,17 @@ services:
 
 environment:
 
-# ---------- POSTGRES ----------
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=supabase
 POSTGRES_DB=postgres
 POSTGRES_PORT=54322
 
-# ---------- SUPABASE STUDIO ----------
 SUPABASE_URL=http://localhost:8080
 SUPABASE_ANON_KEY=92ydXL1u7o6+7+8aYCbXh7s9BwTU/CJQ+pFvvR6Tgt4=
 SUPABASE_SERVICE_KEY=92ydXL1u7o6+7+8aYCbXh7s9BwTU/CJQ+pFvvR6Tgt4=
 SUPABASE_JWT_SECRET=92ydXL1u7o6+7+8aYCbXh7s9BwTU/CJQ+pFvvR6Tgt4=
 STUDIO_PORT=8080
 
-# This is used by Supabase Studio to connect to the Postgres DB
 POSTGRES_URL=postgres://postgres:supabase@postgres:5432/postgres
 
 SUPABASE_DB_HOST=postgres
