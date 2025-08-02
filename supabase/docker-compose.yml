@@ -1,26 +1,31 @@
 services:
   postgres:
+    container_name: supabase-postgres
     image: postgres:14
     restart: always
+    ports:
+      - "54322:5432"  # host:container
     environment:
-      POSTGRES_PASSWORD: supabase
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
     volumes:
-      - dbdata:/var/lib/postgresql/data
-    ports:
-      - "54322:5432"
+      - supabase_db_data:/var/lib/postgresql/data
 
   studio:
-    image: supabase/studio:latest
     container_name: supabase-studio
-    ports:
-      - "8080:3000"
+    image: supabase/studio:latest
+    restart: always
     depends_on:
       - postgres
+    ports:
+      - "8080:3000"  # host:container
     environment:
-      SUPABASE_URL: http://postgres:5432
+      SUPABASE_URL: http://localhost:54321
+      SUPABASE_ANON_KEY: supabase-insecure-anon-key
+      SUPABASE_SERVICE_KEY: supabase-insecure-service-role-key
+      STUDIO_PG_META_URL: http://postgres:5432
+      POSTGRES_PASSWORD: postgres
 
 volumes:
-  dbdata:
-
-
+  supabase_db_data:
